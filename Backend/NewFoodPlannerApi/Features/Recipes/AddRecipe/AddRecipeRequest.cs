@@ -11,6 +11,6 @@ namespace NewFoodPlannerApi.Features.Recipes.AddRecipe
         public string Name { get; set; }
         public string Description { get; set; }
         public int Servings { get; set; }
-        public List<IngredientAndQuantity> IngredientsWithQuantities { get; set; }
+        public List<IngredientWithQuantity> IngredientsWithQuantities { get; set; }
     }
 }

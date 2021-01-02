@@ -7,8 +7,10 @@ namespace NewFoodPlannerApi.Domain
     {
         public int Id { get; set; }
         public string Name { get; set; }
+        public string Description { get; set; }
 
-        public List<IngredientInRecipe> IngredientInRecipes { get; set; } = new List<IngredientInRecipe>();
-        public List<RecipeInPlan> RecipeInPlans { get; set; } = new List<RecipeInPlan>();
+        public List<IngredientWithQuantity> IngredientsAndQuantities { get; set; } = new List<IngredientWithQuantity>();
+
+       
     }
 }

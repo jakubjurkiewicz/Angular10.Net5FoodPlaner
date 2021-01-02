@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace NewFoodPlannerApi.Domain
+namespace NewFoodPlannerApi.Sql.Models
 {
     public class Plan
     {

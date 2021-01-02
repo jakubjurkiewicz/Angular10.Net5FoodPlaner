@@ -1,5 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using NewFoodPlannerApi.Domain;
+using NewFoodPlannerApi.Extensions;
 using NewFoodPlannerApi.Infrastructure.Database;
 using System;
 using System.Collections.Generic;
@@ -16,67 +16,48 @@ namespace NewFoodPlannerApi.Repository
             _context = context;
         }
 
-        public void CreateIngredient(Ingredient ingredient)
+        public void CreateIngredient(Domain.Ingredient ingredient)
         {
-            _context.Ingredients.Add(ingredient);
+            var sqlIngredient = ingredient.ConvertToSqlIngredient();
+            _context.Ingredients.Add(sqlIngredient);
             _context.SaveChanges();
         }
-        public void CreateRecipe(Recipe recipe)
+        public void CreateRecipe(Domain.Recipe recipe)
         {
-            var ingredientsInRecipes = new List<IngredientInRecipe>();
-            foreach (var ingredientInRecipe in recipe.IngredientInRecipes)
-            {
-
-            }
-            _context.Recipes.Add(recipe);
+            var sqlRecipe = recipe.ConvertToSqlRecipe();
+            _context.Recipes.Add(sqlRecipe);
             _context.SaveChanges();
         }
 
-        public void CreatePlan(Plan plan)
+
+        public Domain.Ingredient GetIngredient(int ingredientId)
         {
-            _context.Plans.Add(plan);
-            _context.SaveChanges();
-        }
-        public Ingredient GetIngredient(int ingredientId)
-        {
-            return _context.Ingredients.AsNoTracking().FirstOrDefault(x => x.Id == ingredientId);
+            return _context.Ingredients.AsNoTracking().FirstOrDefault(x => x.Id == ingredientId).ConvertToDomainIngredient();
         }
 
-        public Recipe GetRecipe(int recipeId)
+        public Domain.Recipe GetRecipe(int recipeId)
         {
-            return _context.Recipes.AsNoTracking().FirstOrDefault(x => x.Id == recipeId);
+            return _context.Recipes.AsNoTracking().FirstOrDefault(x => x.Id == recipeId).ConvertToDomainRecipe();
         }
 
-        public Plan GetPlan(int planId)
+        public IEnumerable<Domain.Ingredient> GetAllIngredients()
         {
-            return _context.Plans.AsNoTracking().FirstOrDefault(x => x.Id == planId);
+            return _context.Ingredients.ToList().ConvertToDomainIngredients();
         }
-        public IEnumerable<Ingredient> GetAllIngredients()
+        public IEnumerable<Domain.Recipe> GetAllRecipes()
         {
-            return _context.Ingredients.ToList();
+            return _context.Recipes.Include(r => r.IngredientInRecipes).ThenInclude(ir=> ir.Ingredient).ToList().ConvertToDomainRecipes();
         }
-        public IEnumerable<Recipe> GetAllRecipes()
-        {
-            return _context.Recipes.Include(r => r.IngredientInRecipes).ThenInclude(ir=> ir.Ingredient).ToList();
-        }
-        public IEnumerable<Plan> GetAllPlans()
-        {
-            return _context.Plans.Include(p => p.RecipeInPlans).ThenInclude(rp=>rp.Recipe).ToList();
-        }
-        public void UpdateIngredient(Ingredient ingredient)
+        public void UpdateIngredient(Domain.Ingredient ingredient)
         {
             throw new NotImplementedException();
         }
 
-        public void UpdateRecipe(Recipe recipe)
+        public void UpdateRecipe(Domain.Recipe recipe)
         {
             throw new NotImplementedException();
         }
 
-        public void UpdatePlan(Plan plan)
-        {
-            throw new NotImplementedException();
-        }
 
         public void DeleteIngredient(int ingredientId)
         {
@@ -84,11 +65,6 @@ namespace NewFoodPlannerApi.Repository
         }
 
         public void DeleteRecipe(int recipeId)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void DeletePlan(int planId)
         {
             throw new NotImplementedException();
         }

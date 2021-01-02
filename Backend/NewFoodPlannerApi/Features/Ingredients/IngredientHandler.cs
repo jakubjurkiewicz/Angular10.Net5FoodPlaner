@@ -1,9 +1,7 @@
 ﻿using NewFoodPlannerApi.Domain;
 using NewFoodPlannerApi.Repository;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace NewFoodPlannerApi.Features.Ingredients
 {
@@ -16,7 +14,7 @@ namespace NewFoodPlannerApi.Features.Ingredients
             _foodRepository = foodRepository;
         }
 
-        public IEnumerable<Ingredient> GetAllIngredients()
+        public List<Ingredient> GetAllIngredients()
         {
             return _foodRepository.GetAllIngredients().ToList();
         }

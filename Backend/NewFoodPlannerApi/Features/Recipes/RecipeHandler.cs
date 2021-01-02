@@ -1,9 +1,7 @@
 ﻿using NewFoodPlannerApi.Domain;
 using NewFoodPlannerApi.Repository;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace NewFoodPlannerApi.Features.Recipes
 {
@@ -17,8 +15,10 @@ namespace NewFoodPlannerApi.Features.Recipes
         }
         public List<Recipe> GetAllRecipes()
         {
-          var x=  _foodRepository.GetAllRecipes().ToList();
-            return x;
+         return  _foodRepository.GetAllRecipes().ToList();
+
         }
     }
+
+
 }

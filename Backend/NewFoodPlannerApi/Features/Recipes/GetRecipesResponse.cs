@@ -7,5 +7,11 @@ namespace NewFoodPlannerApi.Features.Recipes
 {
     public class GetRecipesResponse
     {
+        public List<RecipeResponse> Recipes { get; set; }
+    }
+
+    public class RecipeResponse
+    {
+
     }
 }

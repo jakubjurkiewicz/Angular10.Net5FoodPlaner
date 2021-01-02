@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace NewFoodPlannerApi.Features.Ingredients
 {
-   public interface IIngredientHandler
+    public interface IIngredientHandler
     {
-        public IEnumerable<Ingredient> GetAllIngredients();
+        public List<Ingredient> GetAllIngredients();
        public Ingredient GetIngredient(int id);
     }
 }

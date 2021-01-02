@@ -1,5 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using NewFoodPlannerApi.Domain;
+using NewFoodPlannerApi.Sql.Models;
 
 namespace NewFoodPlannerApi.Infrastructure.Database
 {

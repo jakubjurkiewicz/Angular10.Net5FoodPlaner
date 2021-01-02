@@ -1,9 +1,5 @@
 ﻿using NewFoodPlannerApi.Domain;
 using NewFoodPlannerApi.Repository;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace NewFoodPlannerApi.Features.Recipes.AddRecipe
 {
@@ -18,18 +14,15 @@ namespace NewFoodPlannerApi.Features.Recipes.AddRecipe
 
         public void Handle(AddRecipeRequest addRecipeRequest)
         {
-            //var recipe = addRecipeRequest.Recipe;
-
             var recipe = new Recipe {
             Name= addRecipeRequest.Name
             };
-            var ingredients = addRecipeRequest.IngredientsWithQuantities;
+            var ingredientsAndQuantities = addRecipeRequest.IngredientsWithQuantities;
 
-            foreach (var ingredient in ingredients)
+            foreach (var ingredientAndQuantity in ingredientsAndQuantities)
             {
-                recipe.IngredientInRecipes.Add(new Domain.IngredientInRecipe { IngredientId = ingredient.IngredientId });
+                recipe.IngredientsAndQuantities.Add(ingredientAndQuantity);
             }
-
             _foodRepository.CreateRecipe(recipe);
         }
 

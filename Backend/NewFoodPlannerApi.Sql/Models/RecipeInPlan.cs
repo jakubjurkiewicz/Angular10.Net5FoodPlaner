@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace NewFoodPlannerApi.Domain
+namespace NewFoodPlannerApi.Sql.Models
 {
     public class RecipeInPlan
     {

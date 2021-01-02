@@ -1,10 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using NewFoodPlannerApi.Domain;
 using NewFoodPlannerApi.Features.Ingredients.AddIngredient;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace NewFoodPlannerApi.Features.Ingredients
 {
@@ -27,7 +24,7 @@ namespace NewFoodPlannerApi.Features.Ingredients
             addIngredientHandler.Handle(addIngredientRequest);
         }
         [HttpGet]
-        public IEnumerable<Ingredient> GetIngredients()
+        public List<Ingredient> GetIngredients()
         {
             return  _ingredientHandler.GetAllIngredients();
         }
