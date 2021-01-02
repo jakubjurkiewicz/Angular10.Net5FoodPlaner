@@ -1,0 +1,54 @@
+<p>add-recipe works!</p>
+<form (ngSubmit)="saveRecipe()" [formGroup]="recipeForm">
+    <div>
+        <div>
+            <mat-label for="name">Name:</mat-label>
+            <input  type="text" formControlName="name">
+        </div>
+        <div>
+            <label for="description">Description:</label>
+            <input type="text" formControlName="description">
+        </div>
+        <div>
+            <label for="servings">Servings:</label>
+            <input type="number" formControlName="servings">
+        </div>
+        <button type="button" mat-raised-button color="secondary" (click)="addIngredient()">Add Ingredient</button>
+
+        <div formArrayName="ingredientsWithQuantities">
+        <div *ngFor="let ingredient of ingredientsInRecipe.controls; index as i" formGroupName="{{i}}" >
+         
+            <mat-form-field  appearance="outline">
+            <mat-label for="ingredientId">Name:</mat-label>
+            <mat-select  placeholder="Ingredient"formControlName="ingredientId" >
+                <mat-option  *ngFor="let ingredient of ingredients" [value]="ingredient.id">{{ingredient.name}}</mat-option>
+            </mat-select>
+        </mat-form-field>
+        <label for="quantity">Quantity:</label>
+        <input type="number" formControlName="quantity">
+        <button class="material-icons">delete</button>
+        </div>
+    </div>
+
+        <mat-divider></mat-divider>
+        <button type="submit" mat-raised-button color="primary" [disabled]="!recipeForm.valid">Add New Recipe</button>
+
+        <div *ngFor="let ingredient of ingredients; index as i" >
+            <label for="ingredientName">{{ingredient.name}}</label>
+          
+        </div>
+    
+      
+    </div>
+</form>
+
+
+<!-- name: new FormControl(),
+description: new FormControl(),
+servings: new FormControl(),
+ingredients: new FormGroup({
+  name: new FormControl(),
+  kcal: new FormControl(),
+  protein: new FormControl(),
+  carbs: new FormControl(),
+  fat: new FormControl() -->

@@ -7,7 +7,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NewFoodPlannerApi", "NewFoo
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NewFoodPlannerApi.Tests.Unit", "Tests\NewFoodPlannerApi.Tests.Unit\NewFoodPlannerApi.Tests.Unit.csproj", "{16F8D480-D536-45C6-9109-B7AD410B6322}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NewFoodPlannerApi.Domain", "NewFoodPlannerApi.Domain\NewFoodPlannerApi.Domain.csproj", "{0D453DA5-05E5-4C7F-A31F-4C4B4430A4C1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NewFoodPlannerApi.Domain", "NewFoodPlannerApi.Domain\NewFoodPlannerApi.Domain.csproj", "{0D453DA5-05E5-4C7F-A31F-4C4B4430A4C1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NewFoodPlannerApi.Sql", "NewFoodPlannerApi.Sql\NewFoodPlannerApi.Sql.csproj", "{5A5F9E1C-3BD4-4956-81FE-1CC71D10BA07}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +29,10 @@ Global
 		{0D453DA5-05E5-4C7F-A31F-4C4B4430A4C1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0D453DA5-05E5-4C7F-A31F-4C4B4430A4C1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0D453DA5-05E5-4C7F-A31F-4C4B4430A4C1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5A5F9E1C-3BD4-4956-81FE-1CC71D10BA07}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5A5F9E1C-3BD4-4956-81FE-1CC71D10BA07}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5A5F9E1C-3BD4-4956-81FE-1CC71D10BA07}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5A5F9E1C-3BD4-4956-81FE-1CC71D10BA07}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

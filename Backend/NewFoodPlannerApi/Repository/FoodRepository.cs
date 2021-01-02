@@ -23,6 +23,11 @@ namespace NewFoodPlannerApi.Repository
         }
         public void CreateRecipe(Recipe recipe)
         {
+            var ingredientsInRecipes = new List<IngredientInRecipe>();
+            foreach (var ingredientInRecipe in recipe.IngredientInRecipes)
+            {
+
+            }
             _context.Recipes.Add(recipe);
             _context.SaveChanges();
         }

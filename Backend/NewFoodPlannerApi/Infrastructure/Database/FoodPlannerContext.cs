@@ -24,8 +24,15 @@ namespace NewFoodPlannerApi.Infrastructure.Database
             {
                 optionsBuilder
              .UseSqlServer("Data Source = (localdb)\\MSSQLLocalDB; Initial Catalog =  NewFoodPlannerAppData");
-            }
-          
+            }          
+        }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<IngredientInRecipe>()
+                .HasKey(i =>new { i.IngredientId, i.RecipeId});
+            modelBuilder.Entity<RecipeInPlan>()
+                .HasKey(r => new { r.RecipeId, r.PlanId });
         }
 
     }

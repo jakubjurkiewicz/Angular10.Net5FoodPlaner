@@ -12,10 +12,12 @@ namespace NewFoodPlannerApi.Features.Ingredients
     public class IngredientController : Controller
     {
         private readonly IAddIngredientHandler addIngredientHandler;
+        private readonly IIngredientHandler _ingredientHandler;
 
-        public IngredientController(IAddIngredientHandler addIngredientHandler)
+        public IngredientController(IAddIngredientHandler addIngredientHandler, IIngredientHandler ingredientHandler)
         {
             this.addIngredientHandler = addIngredientHandler;
+            _ingredientHandler = ingredientHandler;
         }
 
 
@@ -25,15 +27,15 @@ namespace NewFoodPlannerApi.Features.Ingredients
             addIngredientHandler.Handle(addIngredientRequest);
         }
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Ingredient>>> GetIngredients()
+        public IEnumerable<Ingredient> GetIngredients()
         {
-            return await Task.FromResult(new List<Ingredient>());
+            return  _ingredientHandler.GetAllIngredients();
         }
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<Ingredient>> GetIngredient(int id)
+        public  Ingredient GetIngredient(int id)
         {
-            return await Task.FromResult(new Ingredient());
+            return _ingredientHandler.GetIngredient(id);
         }
         [HttpDelete("{id}")]
         public void DeleteIngredient(int id)

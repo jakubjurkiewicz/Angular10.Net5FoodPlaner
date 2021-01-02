@@ -1,0 +1,29 @@
+<p>add-ingredient works!</p>
+<form (ngSubmit)="saveIngredient()" [formGroup]="ingredientForm">
+    <div>
+
+        <div>
+            <label for="name">Name:</label>
+            <input type="text" formControlName="name">
+        </div>
+        <div>
+            <label for="kcal">Kcal:</label>
+            <input type="number" formControlName="kcal">
+        </div>
+        <div>
+            <label for="protein">Protein:</label>
+            <input type="number" formControlName="protein">
+        </div>
+        <div>
+            <label for="carbs">Carbs:</label>
+            <input type="number" formControlName="carbs">
+        </div>
+
+        <div><label for="fat">Fat:</label>
+            <input type="number" formControlName="fat">
+        </div>
+
+        <button [disabled]="!ingredientForm.valid">Add New Ingredient</button>
+
+    </div>
+</form>

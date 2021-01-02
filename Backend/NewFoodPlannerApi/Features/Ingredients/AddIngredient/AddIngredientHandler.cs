@@ -15,7 +15,15 @@ namespace NewFoodPlannerApi.Features.Ingredients.AddIngredient
 
         public AddIngredientResponse Handle(AddIngredientRequest request)
         {
-
+            var ingredient = new Ingredient
+            {
+                Name = request.Name,
+                Carbs = request.Carbs,
+                Fat = request.Fat,
+                Protein = request.Protein,
+                Kcal = request.Kcal
+            };
+            _foodCommandRepository.CreateIngredient(ingredient);
 
            return new AddIngredientResponse();
         }

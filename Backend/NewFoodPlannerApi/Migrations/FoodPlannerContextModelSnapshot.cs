@@ -21,12 +21,25 @@ namespace NewFoodPlannerApi.Migrations
 
             modelBuilder.Entity("NewFoodPlannerApi.Domain.Ingredient", b =>
                 {
-                    b.Property<Guid>("Id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("int")
+                        .UseIdentityColumn();
+
+                    b.Property<float>("Carbs")
+                        .HasColumnType("real");
+
+                    b.Property<float>("Fat")
+                        .HasColumnType("real");
+
+                    b.Property<float>("Kcal")
+                        .HasColumnType("real");
 
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<float>("Protein")
+                        .HasColumnType("real");
 
                     b.HasKey("Id");
 
@@ -35,22 +48,16 @@ namespace NewFoodPlannerApi.Migrations
 
             modelBuilder.Entity("NewFoodPlannerApi.Domain.IngredientInRecipe", b =>
                 {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
+                    b.Property<int>("IngredientId")
+                        .HasColumnType("int");
 
-                    b.Property<Guid>("IngredientId")
-                        .HasColumnType("uniqueidentifier");
+                    b.Property<int>("RecipeId")
+                        .HasColumnType("int");
 
                     b.Property<decimal>("IngredientQuantity")
                         .HasColumnType("decimal(18,2)");
 
-                    b.Property<Guid>("RecipeId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("IngredientId");
+                    b.HasKey("IngredientId", "RecipeId");
 
                     b.HasIndex("RecipeId");
 
@@ -59,9 +66,10 @@ namespace NewFoodPlannerApi.Migrations
 
             modelBuilder.Entity("NewFoodPlannerApi.Domain.Plan", b =>
                 {
-                    b.Property<Guid>("Id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("int")
+                        .UseIdentityColumn();
 
                     b.Property<DateTime>("DateFrom")
                         .HasColumnType("datetime2");
@@ -79,9 +87,10 @@ namespace NewFoodPlannerApi.Migrations
 
             modelBuilder.Entity("NewFoodPlannerApi.Domain.Recipe", b =>
                 {
-                    b.Property<Guid>("Id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("int")
+                        .UseIdentityColumn();
 
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
@@ -93,24 +102,18 @@ namespace NewFoodPlannerApi.Migrations
 
             modelBuilder.Entity("NewFoodPlannerApi.Domain.RecipeInPlan", b =>
                 {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
+                    b.Property<int>("RecipeId")
+                        .HasColumnType("int");
 
-                    b.Property<Guid>("PlanId")
-                        .HasColumnType("uniqueidentifier");
+                    b.Property<int>("PlanId")
+                        .HasColumnType("int");
 
                     b.Property<double>("PortionsQuantity")
                         .HasColumnType("float");
 
-                    b.Property<Guid>("RecipeId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.HasKey("Id");
+                    b.HasKey("RecipeId", "PlanId");
 
                     b.HasIndex("PlanId");
-
-                    b.HasIndex("RecipeId");
 
                     b.ToTable("RecipeInPlan");
                 });

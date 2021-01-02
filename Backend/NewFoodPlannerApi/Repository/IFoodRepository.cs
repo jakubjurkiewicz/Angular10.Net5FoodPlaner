@@ -16,7 +16,7 @@ namespace NewFoodPlannerApi.Repository
         public Recipe GetRecipe(int recipeId);
         public Plan GetPlan(int planId);
 
-        public IEnumerable<Ingredient> GetAllIngredients();
+        public  IEnumerable<Ingredient> GetAllIngredients();
         public IEnumerable<Recipe> GetAllRecipes();
         public IEnumerable<Plan> GetAllPlans();
 
