@@ -26,5 +26,5 @@ pojedynczy skladnik:{{ingredient?.name}}
       </ng-container>
 
 <tr mat-header-row *matHeaderRowDef="displayedColumns" ></tr>
-<tr mat-row *matRowDef="let row; columns: displayedColumns;" [routerLink]="'/ingredients/' +row.id "  class="row-hover"></tr>
+<tr mat-row *matRowDef="let row; columns: displayedColumns;" [routerLink]="['/ingredients' ,row.id ]"  class="row-hover"></tr>
 </table>

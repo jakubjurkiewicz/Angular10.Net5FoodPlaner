@@ -25,7 +25,7 @@ namespace NewFoodPlannerApi.Features.Recipes
         }
 
         [HttpGet]
-        public List<Recipe> GetIngredients()
+        public List<Recipe> GetRecipes()
         {
             return _recipeHandler.GetAllRecipes();
         }

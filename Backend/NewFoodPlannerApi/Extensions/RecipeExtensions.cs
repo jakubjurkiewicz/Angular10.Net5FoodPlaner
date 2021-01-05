@@ -13,7 +13,9 @@ namespace NewFoodPlannerApi.Extensions
             {
                 Id = recipe.Id,
                 Name = recipe.Name,
-                Description = recipe.Description
+                Description = recipe.Description,
+                MealType = recipe.MealType,
+                PhotoUrl = recipe.PhotoUrl
             };
             sqlRecipe.IngredientInRecipes = new List<Sql.Models.IngredientInRecipe>();
 
@@ -21,7 +23,6 @@ namespace NewFoodPlannerApi.Extensions
             {
                 sqlRecipe.IngredientInRecipes.Add(new Sql.Models.IngredientInRecipe
                 {
-                    Ingredient = ingredientAndQuantity.Ingredient.ConvertToSqlIngredient(),
                     IngredientQuantity = ingredientAndQuantity.Quantity,
                     IngredientId = ingredientAndQuantity.Ingredient.Id
                 });
@@ -33,7 +34,9 @@ namespace NewFoodPlannerApi.Extensions
             var domainRecipe = new Recipe {
             Description = recipe.Description,
             Id= recipe.Id,
-            Name = recipe.Name
+            Name = recipe.Name,
+            MealType = recipe.MealType,
+            PhotoUrl = recipe.PhotoUrl
             };
             domainRecipe.IngredientsAndQuantities = new List<IngredientWithQuantity>();
             foreach (var ingredientInRecipe in recipe.IngredientInRecipes)

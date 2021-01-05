@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using NewFoodPlannerApi.Extensions;
 using NewFoodPlannerApi.Infrastructure.Database;
+using NewFoodPlannerApi.Sql.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,6 +26,9 @@ namespace NewFoodPlannerApi.Repository
         public void CreateRecipe(Domain.Recipe recipe)
         {
             var sqlRecipe = recipe.ConvertToSqlRecipe();
+           
+
+
             _context.Recipes.Add(sqlRecipe);
             _context.SaveChanges();
         }

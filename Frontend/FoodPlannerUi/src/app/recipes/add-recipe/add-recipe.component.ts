@@ -4,7 +4,7 @@ import { FormArray, FormControl, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ErrorTracker } from 'src/app/model/ErrorTracker';
 import { Ingredient } from 'src/app/model/ingredient.model';
-import { Recipe } from 'src/app/model/recipe.model';
+import { Recipe, RecipeCategory } from 'src/app/model/recipe.model';
 
 @Component({
   selector: 'app-add-recipe',
@@ -27,14 +27,15 @@ export class AddRecipeComponent implements OnInit {
     else{
       this.ingredients = resolvedData;
     }
-
+    
 
     this.ingredientsInRecipe= new FormArray([])
 
     this.recipeForm = new FormGroup({
       name: new FormControl(),
       description: new FormControl(),
-      servings: new FormControl(),
+      mealType: new FormControl(),
+      photoUrl: new FormControl(),
       ingredientsWithQuantities: this.ingredientsInRecipe,
    
     });
@@ -46,12 +47,13 @@ export class AddRecipeComponent implements OnInit {
       quantity: new FormControl()
     });
     this.ingredientsInRecipe.push(ingredient);
-    console.log('LOL', this.ingredientsInRecipe);
+  }
+  deleteIngredient(index):void {
+    this.ingredientsInRecipe.removeAt(index);
   }
 
   saveRecipe(): void {
     let newRecipe: Recipe = <Recipe>this.recipeForm.value;
-    console.log(newRecipe, 'new recipe');
      this.http.post<Ingredient>(`http://localhost:5000/api/recipe`, newRecipe).subscribe( response =>{
        console.log('add recipe response: ', response);
      }); 

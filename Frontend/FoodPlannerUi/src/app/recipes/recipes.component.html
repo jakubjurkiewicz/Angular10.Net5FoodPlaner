@@ -1,3 +1,29 @@
 <p>recipes works!</p>
 
 <button mat-raised-button color="primary" routerLink="/recipes/add">Add New Recipe</button>
+
+<label for="listFilter">Filter:</label>
+<input type="text" [(ngModel)]='listFilter' placeholder="Pizza">
+
+
+<div class="content" fxLayout="row wrap" fxLayoutGap="16px grid">
+    <div fxFlex="20%" fxFlex.xs="100%" fxFlex.sm="33%" *ngFor="let recipe of filteredRecipes">
+      <mat-card class="mat-elevation-z4" >
+        <mat-card-header>
+          <mat-card-title>{{recipe.name}}</mat-card-title>
+        </mat-card-header>
+        <img  style="max-height: 20vh; min-height: 20vh;" mat-card-image src="./../assets/images/{{recipe.photoUrl}}.jpg">
+        <mat-card-content style="max-height: 3vh; min-height: 3vh;">
+          <p class="text-wrap">
+            {{recipe.description}}
+          </p>
+        </mat-card-content>
+        <mat-card-actions>
+          <button mat-button>Edit</button>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+  </div>
+  <!-- <div>
+      {{recipes |json}}
+  </div> -->

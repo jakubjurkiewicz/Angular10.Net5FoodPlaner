@@ -15,13 +15,18 @@ namespace NewFoodPlannerApi.Features.Recipes.AddRecipe
         public void Handle(AddRecipeRequest addRecipeRequest)
         {
             var recipe = new Recipe {
-            Name= addRecipeRequest.Name
+            Name= addRecipeRequest.Name,
+            Description = addRecipeRequest.Description,
+            MealType = addRecipeRequest.MealType,
+            PhotoUrl = addRecipeRequest.PhotoUrl
             };
-            var ingredientsAndQuantities = addRecipeRequest.IngredientsWithQuantities;
 
-            foreach (var ingredientAndQuantity in ingredientsAndQuantities)
+            foreach (var idAndQuantity in addRecipeRequest.IngredientsWithQuantities)
             {
-                recipe.IngredientsAndQuantities.Add(ingredientAndQuantity);
+                recipe.IngredientsAndQuantities.Add(new IngredientWithQuantity {
+                Quantity = idAndQuantity.Quantity,
+                Ingredient= new Ingredient { Id = idAndQuantity.IngredientId}
+                });
             }
             _foodRepository.CreateRecipe(recipe);
         }
