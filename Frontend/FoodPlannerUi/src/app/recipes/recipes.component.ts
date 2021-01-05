@@ -1,6 +1,5 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { filter } from 'rxjs/operators';
 import { Recipe } from '../model/recipe.model';
 
 @Component({
@@ -19,7 +18,6 @@ export class RecipesComponent implements OnInit {
   public set listFilter(v: string) {
     this._listFilter = v;
     this.filteredRecipes = this.listFilter ? this.performFilter(this.listFilter) : this.recipes;
-    console.log('po', this.filteredRecipes);
   }
 
 
@@ -35,13 +33,11 @@ export class RecipesComponent implements OnInit {
   performFilter(filterBy: string): Recipe[]{
     filterBy = filterBy.toLocaleLowerCase();
     const x = this.recipes.filter((recipe) => recipe.name.toLocaleLowerCase().indexOf(filterBy) !== -1);
-    console.log('mozetutaj', x);
     return x;
   }
 
   getAllRecipes(): void{
     this.http.get<Recipe[]>('http://localhost:5000/api/recipe').subscribe(response => {
-      console.log('response', response);
       this.recipes = response;
       this.filteredRecipes = this.recipes;
     });

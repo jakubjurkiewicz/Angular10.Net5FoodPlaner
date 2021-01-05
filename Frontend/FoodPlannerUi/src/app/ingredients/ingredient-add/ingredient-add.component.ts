@@ -6,8 +6,8 @@ import { Ingredient } from 'src/app/model/ingredient.model';
 
 @Component({
   selector: 'app-add-ingredient',
-  templateUrl: './add-ingredient.component.html',
-  styleUrls: ['./add-ingredient.component.scss']
+  templateUrl: './ingredient-add.component.html',
+  styleUrls: ['./ingredient-add.component.scss']
 })
 export class AddIngredientComponent implements OnInit {
 

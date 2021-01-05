@@ -1,27 +1,17 @@
 # FoodPlannerUi
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.1.2.
+Contains so far:
+-Lazy loaded (with preloading strategy) feature modules with chilid routing. In routing there are also implemented guards and resolvers;
+-Http calls are enriched by interceptors(to add header, cache and log responses). http calls are made from a separate services provided in root module;
+-Data for feature modules is fetched by observables provided by injected services. Feature modules uses shared module for common imports;
+-Styles are based on material design with flex-layout;
+-Reactive Forms are used, so far the most advanced usage: FormGroup nested in FormArray which is nested in FormGroup (in components code and it's template) 
+    for better understanding of the way it works.
+-Basic global error handling is implemented('ErrorTracker');
+-'Business' features so far:
+Tables of ingredients, recipes and ability to perform basic RESTful CRUD operations linked to ASP.Net core backend with MS SQL database(EF Core).
+The 'Get' requests are implemented with filtering(by name and category), sorting, paging.
+There is many-to-many relation between ingredients and recipes.
 
-## Development server
-
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
-
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+not yet implemented:
+nested components with communication,

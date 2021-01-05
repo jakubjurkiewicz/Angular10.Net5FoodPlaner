@@ -1,9 +1,10 @@
 import { NgModule } from '@angular/core';
 import { IngredientsComponent } from './ingredients-list/ingredients.component';
-import { AddIngredientComponent } from './add-ingredient/add-ingredient.component';
+import { AddIngredientComponent } from './ingredient-add/ingredient-add.component';
 import { IngredientDetailsComponent } from './ingredient-details/ingredient-details.component';
 import { SharedModule } from '../core/shared.module';
 import { IngredientRoutingModule } from './ingredient-routing.module';
+import { IngredientEditComponent } from './ingredient-edit/ingredient-edit.component';
 
 
 
@@ -11,7 +12,8 @@ import { IngredientRoutingModule } from './ingredient-routing.module';
   declarations: [
     IngredientsComponent,
     AddIngredientComponent,
-    IngredientDetailsComponent
+    IngredientDetailsComponent,
+    IngredientEditComponent
   ],
   imports: [
     SharedModule,
