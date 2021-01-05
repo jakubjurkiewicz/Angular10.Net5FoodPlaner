@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router'; 
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-ingredient-details',
@@ -11,7 +11,11 @@ export class IngredientDetailsComponent implements OnInit {
   constructor(private route: ActivatedRoute) {}
 
   ngOnInit(): void {
-    let id = +this.route.snapshot.paramMap.get('id');
+   
+    this.route.data.subscribe(data => { 
+      const resolvedData = data['resolvedDataZRouteraKtoraJeszczeNieMaNazwy'];              // TODO: <-- ogarnąć ten parametr
+    })
   }
 
 }
+

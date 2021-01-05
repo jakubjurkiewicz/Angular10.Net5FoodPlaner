@@ -18,7 +18,7 @@ import { IngredientRoutingModule } from './ingredient-routing.module';
   imports: [
     SharedModule,
     IngredientRoutingModule,
-  
+
   ]
 })
 export class IngredientModule { }

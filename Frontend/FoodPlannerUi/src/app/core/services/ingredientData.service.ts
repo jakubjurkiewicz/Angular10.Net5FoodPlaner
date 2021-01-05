@@ -1,8 +1,8 @@
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Ingredient } from '../../model/ingredient.model';
-import { Observable, throwError } from "rxjs";
-import { map, tap, catchError } from "rxjs/operators";
+import { Observable, throwError } from 'rxjs';
+import { map, tap, catchError } from 'rxjs/operators';
 import { ErrorTracker } from '../../model/ErrorTracker';
 
 @Injectable({
@@ -17,14 +17,14 @@ export class IngredientDataService {
 
   getAllIngredients(): Observable<Ingredient[] | ErrorTracker> {
     const jsonHeader = new HttpHeaders().set('Content-Type', 'application/json; charset=utf-8');
-    return this.http.get<Ingredient[]>("http://localhost:5000/api/ingredient", { headers: jsonHeader }).
+    return this.http.get<Ingredient[]>('http://localhost:5000/api/ingredient', { headers: jsonHeader }).
     pipe(
       catchError(err => this.handleHttpError(err))
     );
   }
 
   private handleHttpError(error: HttpErrorResponse): Observable<ErrorTracker>{
-    let dataError = new ErrorTracker();
+    const dataError = new ErrorTracker();
     dataError.message = error.statusText;
     return throwError(dataError);
   }
@@ -32,10 +32,10 @@ export class IngredientDataService {
   getIngredient(id: number): Observable<Ingredient> {
     return this.http.get<Ingredient>(`http://localhost:5000/api/ingredient/${id}`, {
       headers: new HttpHeaders({
-        'Accept': 'application/json',
-        'Authorization': 'my-token'
+        Accept: 'application/json',
+        Authorization: 'my-token'
       })
-    })
+    });
   }
 
   addIngredient(newIngredient: Ingredient): Observable<Ingredient>{
@@ -45,7 +45,7 @@ export class IngredientDataService {
   updateIngredient(updateIngredient: Ingredient): Observable<void>{
     return this.http.put<void>(`http://localhost:5000/api/ingredient/${updateIngredient.id}`, updateIngredient);
   }
-  deleteIngredient(IngredientId: Number): Observable<void>{
+  deleteIngredient(IngredientId: number): Observable<void>{
    return this.http.delete<void>(`http://localhost:5000/api/ingredient/${IngredientId}`);
   }
 

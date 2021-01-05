@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { HTTP_INTERCEPTORS } from "@angular/common/http";
-import { AddHeaderInterceptor } from "./interceptors/add-header.interceptor";
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { AddHeaderInterceptor } from './interceptors/add-header.interceptor';
 import { LogResponseInterceptor } from './interceptors/log-response.interceptor';
-import { CacheInterceptor } from "./interceptors/cache.interceptor";
+import { CacheInterceptor } from './interceptors/cache.interceptor';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatModule } from '../material-module';
@@ -19,7 +19,7 @@ import { MatModule } from '../material-module';
     { provide: HTTP_INTERCEPTORS, useClass: LogResponseInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: CacheInterceptor, multi: true }
   ],
-  exports:[
+  exports: [
     CommonModule,
     FormsModule,
     ReactiveFormsModule,

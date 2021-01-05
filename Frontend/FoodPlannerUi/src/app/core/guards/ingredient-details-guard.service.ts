@@ -10,7 +10,8 @@ export class IngredientDetailsGuardService implements CanActivate{
 
   canActivate(): boolean {
 
-    // so far I have no idea what condition could I use, later on, when the authorization will be implemented i'll probalby use that :) 04.01.21 /dd.mm.yy
+    // so far I have no idea what condition could I use, later on, when the 
+    // authorization will be implemented i'll probalby use that :) 04.01.21 /dd.mm.yy
     return true;
   }
 }

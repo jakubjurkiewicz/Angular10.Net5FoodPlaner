@@ -25,9 +25,9 @@ ingredientForm: FormGroup;
   }
 
   saveIngredient(): void {
-    let newIngredient: Ingredient = <Ingredient>this.ingredientForm.value;
+    const newIngredient: Ingredient = this.ingredientForm.value as Ingredient;
     console.log(newIngredient);
-    
+
     this.dataService.addIngredient(newIngredient)
       .subscribe((data: Ingredient) => {
         this.router.navigate(['ingredients']);

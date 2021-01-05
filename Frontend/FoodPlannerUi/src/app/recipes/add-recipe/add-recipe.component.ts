@@ -1,10 +1,10 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormArray, FormControl, FormGroup } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { ErrorTracker } from 'src/app/model/ErrorTracker';
 import { Ingredient } from 'src/app/model/ingredient.model';
-import { Recipe, RecipeCategory } from 'src/app/model/recipe.model';
+import { Recipe } from 'src/app/model/recipe.model';
 
 @Component({
   selector: 'app-add-recipe',
@@ -14,22 +14,22 @@ import { Recipe, RecipeCategory } from 'src/app/model/recipe.model';
 export class AddRecipeComponent implements OnInit {
 
   recipeForm: FormGroup;
-  ingredientsInRecipe:  FormArray;
+  ingredientsInRecipe: FormArray;
   ingredients: Ingredient[];
 
   constructor( private route: ActivatedRoute, private http: HttpClient) { }
 
   ngOnInit(): void {
-    let resolvedData: Ingredient[] | ErrorTracker = this.route.snapshot.data['resolvedIngredientsForNewRecipe'];
-    if(resolvedData instanceof ErrorTracker){
+    const resolvedData: Ingredient[] | ErrorTracker = this.route.snapshot.data.resolvedIngredientsForNewRecipe;
+    if (resolvedData instanceof ErrorTracker){
       console.log(`error tracker : ${resolvedData.message}`);
     }
     else{
       this.ingredients = resolvedData;
     }
-    
 
-    this.ingredientsInRecipe= new FormArray([])
+
+    this.ingredientsInRecipe = new FormArray([]);
 
     this.recipeForm = new FormGroup({
       name: new FormControl(),
@@ -37,26 +37,26 @@ export class AddRecipeComponent implements OnInit {
       mealType: new FormControl(),
       photoUrl: new FormControl(),
       ingredientsWithQuantities: this.ingredientsInRecipe,
-   
+
     });
   }
 
   addIngredient(): void {
-    let ingredient = new FormGroup({
+    const ingredient = new FormGroup({
       ingredientId: new FormControl(),
       quantity: new FormControl()
     });
     this.ingredientsInRecipe.push(ingredient);
   }
-  deleteIngredient(index):void {
+  deleteIngredient(index): void {
     this.ingredientsInRecipe.removeAt(index);
   }
 
   saveRecipe(): void {
-    let newRecipe: Recipe = <Recipe>this.recipeForm.value;
-     this.http.post<Ingredient>(`http://localhost:5000/api/recipe`, newRecipe).subscribe( response =>{
+    const newRecipe: Recipe = this.recipeForm.value as Recipe;
+    this.http.post<Ingredient>(`http://localhost:5000/api/recipe`, newRecipe).subscribe( response => {
        console.log('add recipe response: ', response);
-     }); 
+     });
     // this.dataService.addRecipe(newRecipe)
     //   .subscribe((data: Recipe) => {
     //     this.router.navigate(['recipes']);

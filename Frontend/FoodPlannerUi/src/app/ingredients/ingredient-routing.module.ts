@@ -8,10 +8,10 @@ import { IngredientDetailsGuardService } from '../core/guards/ingredient-details
 import { IngredientDetailsResolverService } from '../core/resolvers/ingredient-details-resolver.service';
 
 const routes: Routes = [
-  { path: "ingredients", component: IngredientsComponent, resolve: { resolvedIngredients: IngredientResolverService } },
-  { path: "ingredients/add", component: AddIngredientComponent },
+  { path: 'ingredients', component: IngredientsComponent, resolve: { resolvedIngredients: IngredientResolverService } },
+  { path: 'ingredients/add', component: AddIngredientComponent },
   {
-    path: "ingredients/:id", component: IngredientDetailsComponent, canActivate: [IngredientDetailsGuardService]
+    path: 'ingredients/:id', component: IngredientDetailsComponent, canActivate: [IngredientDetailsGuardService]
     , resolve: { resolvedIngredientDetails: IngredientDetailsResolverService }
   },
 ];

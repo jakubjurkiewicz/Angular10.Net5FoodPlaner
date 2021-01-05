@@ -5,7 +5,7 @@ import { AppComponent } from './app.component';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { PlansComponent } from './plans/plans.component';
 import { HttpClientModule } from '@angular/common/http';
-import { FlexLayoutModule } from "@angular/flex-layout";
+import { FlexLayoutModule } from '@angular/flex-layout';
 import { IngredientModule } from './ingredients/ingredient.module';
 import { RecipeModule } from './recipes/recipe.module';
 import { SharedModule } from './core/shared.module';
@@ -14,8 +14,8 @@ import { SharedModule } from './core/shared.module';
 @NgModule({
   declarations: [
     AppComponent,
-    PlansComponent,  
-    
+    PlansComponent,
+
   ],
   imports: [
     SharedModule,

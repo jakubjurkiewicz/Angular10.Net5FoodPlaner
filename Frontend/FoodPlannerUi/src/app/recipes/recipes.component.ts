@@ -12,18 +12,18 @@ export class RecipesComponent implements OnInit {
 
   recipes: Recipe[];
   filteredRecipes: Recipe[];
-  _listFilter : string;  
-  public get listFilter() : string {
+  _listFilter: string;
+  public get listFilter(): string {
     return this._listFilter;
-  }  
-  public set listFilter(v : string) {
+  }
+  public set listFilter(v: string) {
     this._listFilter = v;
     this.filteredRecipes = this.listFilter ? this.performFilter(this.listFilter) : this.recipes;
     console.log('po', this.filteredRecipes);
   }
-  
-  
-  constructor(private http: HttpClient) { 
+
+
+  constructor(private http: HttpClient) {
     console.log('constructor');
   }
 
@@ -34,16 +34,16 @@ export class RecipesComponent implements OnInit {
 
   performFilter(filterBy: string): Recipe[]{
     filterBy = filterBy.toLocaleLowerCase();
-    let x = this.recipes.filter((recipe)=> recipe.name.toLocaleLowerCase().indexOf(filterBy) !== -1);
-console.log('mozetutaj', x);
-      return x;
+    const x = this.recipes.filter((recipe) => recipe.name.toLocaleLowerCase().indexOf(filterBy) !== -1);
+    console.log('mozetutaj', x);
+    return x;
   }
 
-  getAllRecipes(){
-    this.http.get<Recipe[]>("http://localhost:5000/api/recipe").subscribe(response => {
+  getAllRecipes(): void{
+    this.http.get<Recipe[]>('http://localhost:5000/api/recipe').subscribe(response => {
       console.log('response', response);
-    this.recipes = response;
-    this.filteredRecipes = this.recipes;
+      this.recipes = response;
+      this.filteredRecipes = this.recipes;
     });
   }
 }
