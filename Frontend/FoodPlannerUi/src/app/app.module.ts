@@ -5,25 +5,26 @@ import { AppComponent } from './app.component';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { PlansComponent } from './plans/plans.component';
 import { HttpClientModule } from '@angular/common/http';
-import { FlexLayoutModule } from '@angular/flex-layout';
-import { IngredientModule } from './ingredients/ingredient.module';
 import { RecipeModule } from './recipes/recipe.module';
-import { SharedModule } from './core/shared.module';
+import { SharedModule } from './shared/shared.module';
+import { UserModule } from './user/user.module';
+import { CoreModule } from './core/core.module';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     PlansComponent,
+    
 
   ],
   imports: [
     SharedModule,
+    CoreModule,
     BrowserModule,
     NoopAnimationsModule,
     HttpClientModule,
-    FlexLayoutModule,
-    IngredientModule,
+    UserModule,
     RecipeModule,
     AppRoutingModule,
   ],

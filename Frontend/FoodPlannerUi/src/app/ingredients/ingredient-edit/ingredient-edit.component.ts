@@ -9,6 +9,7 @@ export class IngredientEditComponent implements OnInit {
 
   constructor() { }
 
+
   ngOnInit(): void {
   }
 

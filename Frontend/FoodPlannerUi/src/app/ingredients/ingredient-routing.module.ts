@@ -7,15 +7,24 @@ import { IngredientDetailsComponent } from './ingredient-details/ingredient-deta
 import { IngredientDetailsGuardService } from '../core/guards/ingredient-details-guard.service';
 import { IngredientDetailsResolverService } from '../core/resolvers/ingredient-details-resolver.service';
 import { IngredientEditComponent } from './ingredient-edit/ingredient-edit.component';
+import { IngredientEditInfoComponent } from './ingredient-edit/ingredient-edit-info/ingredient-edit-info.component';
+import { IngredientEditTagsComponent } from "./ingredient-edit/ingredient-edit-tags/ingredient-edit-tags.component";
 
 const routes: Routes = [
-  { path: 'ingredients', component: IngredientsComponent, resolve: { resolvedIngredients: IngredientResolverService } },
-  { path: 'ingredients/add', component: AddIngredientComponent },
+
+  { path: '', component: IngredientsComponent, resolve: { resolvedIngredients: IngredientResolverService } },
+  { path: 'add', component: AddIngredientComponent },
   {
-    path: 'ingredients/:id', component: IngredientDetailsComponent, canActivate: [IngredientDetailsGuardService]
+    path: ':id', component: IngredientDetailsComponent, canActivate: [IngredientDetailsGuardService]
     , resolve: { resolvedIngredientDetails: IngredientDetailsResolverService }
   },
-  { path: 'ingredients/:id/edit', component: IngredientEditComponent}
+  {
+    path: ':id/edit', component: IngredientEditComponent, children: [
+      { path: '', redirectTo: 'info', pathMatch: 'full' },
+      { path: 'info', component: IngredientEditInfoComponent },
+      { path: 'tags', component: IngredientEditTagsComponent }
+    ]
+  }
 ];
 
 @NgModule({
@@ -23,7 +32,16 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class IngredientRoutingModule { }
+export class IngredientRoutingModule {
+  static components =[
+    IngredientsComponent,
+    AddIngredientComponent,
+    IngredientDetailsComponent,
+    IngredientEditComponent,
+    IngredientEditInfoComponent,
+    IngredientEditTagsComponent
+  ];
+ }
 
 
 

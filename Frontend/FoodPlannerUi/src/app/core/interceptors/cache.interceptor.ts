@@ -1,8 +1,8 @@
-import { HttpEvent, HttpInterceptor, HttpHandler, HttpRequest, HttpEventType, HttpResponse } from '@angular/common/http';
+import { HttpEvent, HttpInterceptor, HttpHandler, HttpRequest,  HttpResponse } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { tap } from 'rxjs/operators';
-import { HttpCacheService } from '../../services/http-cache.service';
+import { HttpCacheService } from '../services/http-cache.service';
 
 @Injectable()
 export class CacheInterceptor implements HttpInterceptor {

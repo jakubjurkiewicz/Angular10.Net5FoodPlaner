@@ -21,6 +21,10 @@ namespace NewFoodPlannerApi.Features.Ingredients
 
         public Ingredient GetIngredient(int id)
         {
+            if(id == 0)
+            {
+                return new Ingredient();
+            }
             return _foodRepository.GetIngredient(id);
         }
     }

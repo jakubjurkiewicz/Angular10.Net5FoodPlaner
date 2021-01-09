@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RecipesComponent } from './recipes.component';
 import { AddRecipeComponent } from './add-recipe/add-recipe.component';
-import { SharedModule } from '../core/shared.module';
+import { SharedModule } from '../shared/shared.module';
 import { RouterModule } from '@angular/router';
 import { RecipeRoutingModule } from './recipe-routing.module';
 

@@ -2,6 +2,7 @@
 using NewFoodPlannerApi.Domain;
 using NewFoodPlannerApi.Features.Ingredients.AddIngredient;
 using System.Collections.Generic;
+using System.Diagnostics;
 
 namespace NewFoodPlannerApi.Features.Ingredients
 {
@@ -26,7 +27,12 @@ namespace NewFoodPlannerApi.Features.Ingredients
         [HttpGet]
         public List<Ingredient> GetIngredients()
         {
-            return  _ingredientHandler.GetAllIngredients();
+            var stopwatch = new Stopwatch();
+            stopwatch.Start();
+            var ingredients =  _ingredientHandler.GetAllIngredients();
+            System.Console.WriteLine("Get Ingredients took:", stopwatch.ElapsedMilliseconds);
+            stopwatch.Stop();
+            return ingredients;
         }
 
         [HttpGet("{id}")]
