@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Ingredient } from '../../model/ingredient.model';
-import { IngredientDataService } from '../../core/services/ingredientData.service';
+import { IngredientDataService } from '../../core/services/ingredient-data.service';
 import { ErrorTracker } from '../../model/ErrorTracker';
 import { ActivatedRoute } from '@angular/router';
 import { MatTableDataSource } from '@angular/material/table';
+import { EmitEvent, EventBusService, Events } from 'src/app/core/services/event-bus.service';
 
 @Component({
   selector: 'app-ingredients',
@@ -18,7 +19,7 @@ export class IngredientsComponent implements OnInit {
   displayedColumns: string[] = ['name', 'kcal', 'protein', 'carbs', 'fat'];
 
 
-  constructor(private dataService: IngredientDataService, private route: ActivatedRoute) { }
+  constructor(private dataService: IngredientDataService, private route: ActivatedRoute, private eventBus: EventBusService) { }
 
   ngOnInit(): void {
     const resolvedData: Ingredient[] | ErrorTracker = this.route.snapshot.data.resolvedIngredients;
@@ -41,6 +42,9 @@ export class IngredientsComponent implements OnInit {
         err => console.log(err));
   }
 
+  selectIngredient(ingredient: Ingredient){
+    this.eventBus.emit(new EmitEvent(Events.IngredientSelected , ingredient));
+  }
 
   deleteIngredient(id: number): void {
     this.dataService.deleteIngredient(id).subscribe((data: void) => {

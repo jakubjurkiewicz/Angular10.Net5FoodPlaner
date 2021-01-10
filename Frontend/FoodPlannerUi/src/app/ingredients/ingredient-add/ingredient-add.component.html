@@ -5,10 +5,21 @@
         <div>
             <label for="name">Name:</label>
             <input type="text" formControlName="name">
+            <span class="invalid-feedback">
+                <span *ngIf="ingredientForm.get('name').errors?.required && ingredientForm.get('name').dirty">
+                    Please enter ingredient name.
+                </span>
+                <span *ngIf="ingredientForm.get('name').errors?.minlength && ingredientForm.get('name').dirty">
+                    The name must be longer than 2 characters.
+                </span>
+            </span>
         </div>
         <div>
             <label for="kcal">Kcal:</label>
             <input type="number" formControlName="kcal">
+            <span *ngIf="ingredientForm.get('kcal').errors?.subZero">
+                Kcal can't be a negative number
+            </span>
         </div>
         <div>
             <label for="protein">Protein:</label>

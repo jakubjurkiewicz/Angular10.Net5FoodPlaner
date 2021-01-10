@@ -3,7 +3,7 @@ import { Resolve, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/r
 import { Observable, of } from 'rxjs';
 import { ErrorTracker } from '../../model/ErrorTracker';
 import { Ingredient } from '../../model/ingredient.model';
-import { IngredientDataService } from '../services/ingredientData.service';
+import { IngredientDataService } from '../services/ingredient-data.service';
 import { catchError } from 'rxjs/operators';
 
 
