@@ -71,6 +71,8 @@ I havent spend much time on backend so far, only to provide data for frontend. I
 ## Plans for february,march:&nbsp;
 - Make all the handling calls asynchronous,
 
+- Sorting, filtering, paging on server side,
+
 - implement rest of the basic features,
 
 - implement CQRS, divide app to two separate ones and communicate them with RabbitMq (in the future i want to use some service bus)
