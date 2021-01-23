@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Ingredient } from './ingredient.model';
 
-@Injectable()
 export class Recipe{
 public name: string;
 public ingredients: Ingredient[];

@@ -1,10 +1,11 @@
-import { NgModule } from '@angular/core';
+import { NgModule, Optional, SkipSelf } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AddHeaderInterceptor } from './interceptors/add-header.interceptor';
 import { LogResponseInterceptor } from './interceptors/log-response.interceptor';
 import { CacheInterceptor } from './interceptors/cache.interceptor';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
+import { throwIfAlreadyLoaded } from './guards/module-import-guard';
 
 
 
@@ -19,4 +20,8 @@ import { PageNotFoundComponent } from './components/page-not-found/page-not-foun
     CommonModule
   ]
 })
-export class CoreModule { }
+export class CoreModule { 
+  constructor(@Optional() @SkipSelf() parentModule: CoreModule){
+    throwIfAlreadyLoaded(parentModule,'CoreModule');
+  }
+}

@@ -1,15 +1,17 @@
 import { Component, OnInit } from '@angular/core';
-import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormGroup, ValidatorFn, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { IngredientDataService } from 'src/app/core/services/ingredient-data.service';
 import { Ingredient } from 'src/app/model/ingredient.model';
 
 
-function isBiggerThanZeroValidator(c: AbstractControl): { [key: string]: boolean } | null {
-  if (c.value !== null && (isNaN(c.value) || c.value < 0)) {
-    return { 'subZero': true }
+function isBiggerThanParamValidator(param: number): ValidatorFn {
+  return (c: AbstractControl): { [key: string]: boolean } | null => {
+    if (c.value !== null && (isNaN(c.value) || c.value < 0)) {
+      return { 'subZero': true }
+    }
+    return null;
   }
-  return null;
 }
 
 @Component({
@@ -25,7 +27,7 @@ export class AddIngredientComponent implements OnInit {
   ngOnInit(): void {
     this.ingredientForm = this.fb.group({
       name: ['', [Validators.required, Validators.minLength(3)]],
-      kcal: ['', isBiggerThanZeroValidator],
+      kcal: ['', isBiggerThanParamValidator(0)],
       protein: '',
       carbs: '',
       fat: ''
