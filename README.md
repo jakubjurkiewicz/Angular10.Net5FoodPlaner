@@ -44,7 +44,7 @@ It will help me organise, eat healthier, don't waste food. In future I want to i
 ## not yet implemented:&nbsp;
 - Nested components with communication,&nbsp;
 
-- Unit tets (will be until 15.02.2021),&nbsp;
+- Unit tets (will be in the next update),&nbsp;
 
 - Security (I'll start with OpenId and Oauth2)&nbsp;
 
@@ -64,7 +64,7 @@ I havent spend much time on backend so far, only to provide data for frontend. I
 
 - repository pattern which I want to quit in the future.
 
-- Unit tests in Xunit (I'll add them till 15.02.2021),
+- Unit tests in Xunit (I'll add them in the next update),
 
 - Mocking with NSubstitute
 ----
